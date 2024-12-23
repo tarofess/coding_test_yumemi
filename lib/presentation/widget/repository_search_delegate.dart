@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:coding_test_yumemi/application/state/repository_notifier.dart';
+import 'package:coding_test_yumemi/presentation/widget/search_results_item_card.dart';
+import 'package:coding_test_yumemi/presentation/widget/error_message_widget.dart';
+import 'package:coding_test_yumemi/domain/type/repository.dart';
+
 class RepositorySearchDelegate extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -44,10 +49,34 @@ class RepositorySearchResults extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final repositoryState = ref.watch(repositoryNotifierProvider(query));
+
+    return repositoryState.when(
+      data: (repositories) => repositories.isEmpty
+          ? _buildEmptyMessage()
+          : _buildRepositoryList(repositories),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stack) => ErrorMessageWidget(message: error.toString()),
+    );
+  }
+
+  Widget _buildEmptyMessage() {
     return Center(
       child: Text(
-        '$query検索結果',
-        style: TextStyle(fontSize: 20.sp),
+        '検索結果がありません >_<',
+        style: TextStyle(fontSize: 18.sp),
+      ),
+    );
+  }
+
+  Widget _buildRepositoryList(List<Repository> repositories) {
+    return SafeArea(
+      child: ListView.builder(
+        itemCount: repositories.length,
+        itemBuilder: (context, index) => SearchResultsItemCard(
+          key: ValueKey(repositories[index].id),
+          repository: repositories[index],
+        ),
       ),
     );
   }

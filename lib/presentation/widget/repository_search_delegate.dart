@@ -54,7 +54,7 @@ class RepositorySearchResults extends HookConsumerWidget {
     return repositoryState.when(
       data: (repositories) => repositories.isEmpty
           ? _buildEmptyMessage()
-          : _buildRepositoryList(repositories),
+          : _buildRepositoryList(ref, repositories),
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) => ErrorMessageWidget(message: error.toString()),
     );
@@ -69,13 +69,45 @@ class RepositorySearchResults extends HookConsumerWidget {
     );
   }
 
-  Widget _buildRepositoryList(List<Repository> repositories) {
+  Widget _buildRepositoryList(WidgetRef ref, List<Repository> repositories) {
     return SafeArea(
-      child: ListView.builder(
-        itemCount: repositories.length,
-        itemBuilder: (context, index) => SearchResultsItemCard(
-          key: ValueKey(repositories[index].id),
-          repository: repositories[index],
+      child: Column(
+        children: [
+          _buildSortButton(ref),
+          Expanded(
+            child: ListView.builder(
+              itemCount: repositories.length,
+              itemBuilder: (context, index) => SearchResultsItemCard(
+                key: ValueKey(repositories[index].id),
+                repository: repositories[index],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSortButton(WidgetRef ref) {
+    final notifier = ref.read(repositoryNotifierProvider(query).notifier);
+    final isStarAscending = notifier.isStarAscending;
+
+    return Padding(
+      padding: EdgeInsets.all(8.r),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () {
+            notifier.toggleSortByStarCount();
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.blue[100],
+          ),
+          child: Text(
+            isStarAscending ? 'Star数（昇順）' : 'Star数（降順）',
+            style: TextStyle(fontSize: 14.sp),
+          ),
         ),
       ),
     );

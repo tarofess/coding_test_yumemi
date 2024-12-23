@@ -22,6 +22,10 @@ class SearchResultsItemCard extends ConsumerWidget {
               repository.name,
               style: TextStyle(fontSize: 16.sp),
             ),
+            subtitle: Text(
+              'Star: ${repository.stargazersCount.toString()}',
+              style: TextStyle(fontSize: 12.sp),
+            ),
           ),
         ),
       ),

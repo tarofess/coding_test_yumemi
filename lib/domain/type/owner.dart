@@ -7,7 +7,7 @@ part 'owner.g.dart';
 class Owner with _$Owner {
   factory Owner({
     required String login,
-    required String avatarUrl,
+    @JsonKey(name: 'avatar_url') required String avatarUrl,
   }) = _Owner;
 
   factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);

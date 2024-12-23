@@ -8,8 +8,8 @@ part 'search_response.g.dart';
 @freezed
 class SearchResponse with _$SearchResponse {
   factory SearchResponse({
-    required int totalCount,
-    required bool incompleteResults,
+    @JsonKey(name: 'total_count') required int totalCount,
+    @JsonKey(name: 'incomplete_results') required bool incompleteResults,
     required List<Repository> items,
   }) = _SearchResponse;
 

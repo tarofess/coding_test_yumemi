@@ -21,6 +21,7 @@ Owner _$OwnerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Owner {
   String get login => throw _privateConstructorUsedError;
+  @JsonKey(name: 'avatar_url')
   String get avatarUrl => throw _privateConstructorUsedError;
 
   /// Serializes this Owner to a JSON map.
@@ -37,7 +38,7 @@ abstract class $OwnerCopyWith<$Res> {
   factory $OwnerCopyWith(Owner value, $Res Function(Owner) then) =
       _$OwnerCopyWithImpl<$Res, Owner>;
   @useResult
-  $Res call({String login, String avatarUrl});
+  $Res call({String login, @JsonKey(name: 'avatar_url') String avatarUrl});
 }
 
 /// @nodoc
@@ -78,7 +79,7 @@ abstract class _$$OwnerImplCopyWith<$Res> implements $OwnerCopyWith<$Res> {
       __$$OwnerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String login, String avatarUrl});
+  $Res call({String login, @JsonKey(name: 'avatar_url') String avatarUrl});
 }
 
 /// @nodoc
@@ -113,7 +114,9 @@ class __$$OwnerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OwnerImpl implements _Owner {
-  _$OwnerImpl({required this.login, required this.avatarUrl});
+  _$OwnerImpl(
+      {required this.login,
+      @JsonKey(name: 'avatar_url') required this.avatarUrl});
 
   factory _$OwnerImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerImplFromJson(json);
@@ -121,6 +124,7 @@ class _$OwnerImpl implements _Owner {
   @override
   final String login;
   @override
+  @JsonKey(name: 'avatar_url')
   final String avatarUrl;
 
   @override
@@ -160,14 +164,16 @@ class _$OwnerImpl implements _Owner {
 
 abstract class _Owner implements Owner {
   factory _Owner(
-      {required final String login,
-      required final String avatarUrl}) = _$OwnerImpl;
+          {required final String login,
+          @JsonKey(name: 'avatar_url') required final String avatarUrl}) =
+      _$OwnerImpl;
 
   factory _Owner.fromJson(Map<String, dynamic> json) = _$OwnerImpl.fromJson;
 
   @override
   String get login;
   @override
+  @JsonKey(name: 'avatar_url')
   String get avatarUrl;
 
   /// Create a copy of Owner

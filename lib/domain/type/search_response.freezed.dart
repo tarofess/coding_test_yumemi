@@ -20,7 +20,9 @@ SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SearchResponse {
+  @JsonKey(name: 'total_count')
   int get totalCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'incomplete_results')
   bool get incompleteResults => throw _privateConstructorUsedError;
   List<Repository> get items => throw _privateConstructorUsedError;
 
@@ -40,7 +42,10 @@ abstract class $SearchResponseCopyWith<$Res> {
           SearchResponse value, $Res Function(SearchResponse) then) =
       _$SearchResponseCopyWithImpl<$Res, SearchResponse>;
   @useResult
-  $Res call({int totalCount, bool incompleteResults, List<Repository> items});
+  $Res call(
+      {@JsonKey(name: 'total_count') int totalCount,
+      @JsonKey(name: 'incomplete_results') bool incompleteResults,
+      List<Repository> items});
 }
 
 /// @nodoc
@@ -87,7 +92,10 @@ abstract class _$$SearchResponseImplCopyWith<$Res>
       __$$SearchResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int totalCount, bool incompleteResults, List<Repository> items});
+  $Res call(
+      {@JsonKey(name: 'total_count') int totalCount,
+      @JsonKey(name: 'incomplete_results') bool incompleteResults,
+      List<Repository> items});
 }
 
 /// @nodoc
@@ -128,8 +136,8 @@ class __$$SearchResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SearchResponseImpl implements _SearchResponse {
   _$SearchResponseImpl(
-      {required this.totalCount,
-      required this.incompleteResults,
+      {@JsonKey(name: 'total_count') required this.totalCount,
+      @JsonKey(name: 'incomplete_results') required this.incompleteResults,
       required final List<Repository> items})
       : _items = items;
 
@@ -137,8 +145,10 @@ class _$SearchResponseImpl implements _SearchResponse {
       _$$SearchResponseImplFromJson(json);
 
   @override
+  @JsonKey(name: 'total_count')
   final int totalCount;
   @override
+  @JsonKey(name: 'incomplete_results')
   final bool incompleteResults;
   final List<Repository> _items;
   @override
@@ -189,7 +199,8 @@ class _$SearchResponseImpl implements _SearchResponse {
 
 abstract class _SearchResponse implements SearchResponse {
   factory _SearchResponse(
-      {required final int totalCount,
+      {@JsonKey(name: 'total_count') required final int totalCount,
+      @JsonKey(name: 'incomplete_results')
       required final bool incompleteResults,
       required final List<Repository> items}) = _$SearchResponseImpl;
 
@@ -197,8 +208,10 @@ abstract class _SearchResponse implements SearchResponse {
       _$SearchResponseImpl.fromJson;
 
   @override
+  @JsonKey(name: 'total_count')
   int get totalCount;
   @override
+  @JsonKey(name: 'incomplete_results')
   bool get incompleteResults;
   @override
   List<Repository> get items;

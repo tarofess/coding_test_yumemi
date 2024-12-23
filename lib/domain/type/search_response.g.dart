@@ -8,8 +8,8 @@ part of 'search_response.dart';
 
 _$SearchResponseImpl _$$SearchResponseImplFromJson(Map<String, dynamic> json) =>
     _$SearchResponseImpl(
-      totalCount: (json['totalCount'] as num).toInt(),
-      incompleteResults: json['incompleteResults'] as bool,
+      totalCount: (json['total_count'] as num).toInt(),
+      incompleteResults: json['incomplete_results'] as bool,
       items: (json['items'] as List<dynamic>)
           .map((e) => Repository.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -18,7 +18,7 @@ _$SearchResponseImpl _$$SearchResponseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SearchResponseImplToJson(
         _$SearchResponseImpl instance) =>
     <String, dynamic>{
-      'totalCount': instance.totalCount,
-      'incompleteResults': instance.incompleteResults,
+      'total_count': instance.totalCount,
+      'incomplete_results': instance.incompleteResults,
       'items': instance.items,
     };

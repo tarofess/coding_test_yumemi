@@ -23,10 +23,14 @@ mixin _$Repository {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   Owner get owner => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
+  @JsonKey(name: 'stargazers_count')
   int get stargazersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'watchers_count')
   int get watchersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'forks_count')
   int get forksCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'open_issues_count')
   int get openIssuesCount => throw _privateConstructorUsedError;
 
   /// Serializes this Repository to a JSON map.
@@ -49,11 +53,11 @@ abstract class $RepositoryCopyWith<$Res> {
       {int id,
       String name,
       Owner owner,
-      String language,
-      int stargazersCount,
-      int watchersCount,
-      int forksCount,
-      int openIssuesCount});
+      String? language,
+      @JsonKey(name: 'stargazers_count') int stargazersCount,
+      @JsonKey(name: 'watchers_count') int watchersCount,
+      @JsonKey(name: 'forks_count') int forksCount,
+      @JsonKey(name: 'open_issues_count') int openIssuesCount});
 
   $OwnerCopyWith<$Res> get owner;
 }
@@ -76,7 +80,7 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
     Object? id = null,
     Object? name = null,
     Object? owner = null,
-    Object? language = null,
+    Object? language = freezed,
     Object? stargazersCount = null,
     Object? watchersCount = null,
     Object? forksCount = null,
@@ -95,10 +99,10 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as Owner,
-      language: null == language
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
@@ -141,11 +145,11 @@ abstract class _$$RepositoryImplCopyWith<$Res>
       {int id,
       String name,
       Owner owner,
-      String language,
-      int stargazersCount,
-      int watchersCount,
-      int forksCount,
-      int openIssuesCount});
+      String? language,
+      @JsonKey(name: 'stargazers_count') int stargazersCount,
+      @JsonKey(name: 'watchers_count') int watchersCount,
+      @JsonKey(name: 'forks_count') int forksCount,
+      @JsonKey(name: 'open_issues_count') int openIssuesCount});
 
   @override
   $OwnerCopyWith<$Res> get owner;
@@ -167,7 +171,7 @@ class __$$RepositoryImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? owner = null,
-    Object? language = null,
+    Object? language = freezed,
     Object? stargazersCount = null,
     Object? watchersCount = null,
     Object? forksCount = null,
@@ -186,10 +190,10 @@ class __$$RepositoryImplCopyWithImpl<$Res>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as Owner,
-      language: null == language
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
@@ -218,10 +222,10 @@ class _$RepositoryImpl implements _Repository {
       required this.name,
       required this.owner,
       required this.language,
-      required this.stargazersCount,
-      required this.watchersCount,
-      required this.forksCount,
-      required this.openIssuesCount});
+      @JsonKey(name: 'stargazers_count') required this.stargazersCount,
+      @JsonKey(name: 'watchers_count') required this.watchersCount,
+      @JsonKey(name: 'forks_count') required this.forksCount,
+      @JsonKey(name: 'open_issues_count') required this.openIssuesCount});
 
   factory _$RepositoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepositoryImplFromJson(json);
@@ -233,14 +237,18 @@ class _$RepositoryImpl implements _Repository {
   @override
   final Owner owner;
   @override
-  final String language;
+  final String? language;
   @override
+  @JsonKey(name: 'stargazers_count')
   final int stargazersCount;
   @override
+  @JsonKey(name: 'watchers_count')
   final int watchersCount;
   @override
+  @JsonKey(name: 'forks_count')
   final int forksCount;
   @override
+  @JsonKey(name: 'open_issues_count')
   final int openIssuesCount;
 
   @override
@@ -294,10 +302,11 @@ abstract class _Repository implements Repository {
       {required final int id,
       required final String name,
       required final Owner owner,
-      required final String language,
-      required final int stargazersCount,
-      required final int watchersCount,
-      required final int forksCount,
+      required final String? language,
+      @JsonKey(name: 'stargazers_count') required final int stargazersCount,
+      @JsonKey(name: 'watchers_count') required final int watchersCount,
+      @JsonKey(name: 'forks_count') required final int forksCount,
+      @JsonKey(name: 'open_issues_count')
       required final int openIssuesCount}) = _$RepositoryImpl;
 
   factory _Repository.fromJson(Map<String, dynamic> json) =
@@ -310,14 +319,18 @@ abstract class _Repository implements Repository {
   @override
   Owner get owner;
   @override
-  String get language;
+  String? get language;
   @override
+  @JsonKey(name: 'stargazers_count')
   int get stargazersCount;
   @override
+  @JsonKey(name: 'watchers_count')
   int get watchersCount;
   @override
+  @JsonKey(name: 'forks_count')
   int get forksCount;
   @override
+  @JsonKey(name: 'open_issues_count')
   int get openIssuesCount;
 
   /// Create a copy of Repository

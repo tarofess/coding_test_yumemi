@@ -11,11 +11,11 @@ class Repository with _$Repository {
     required int id,
     required String name,
     required Owner owner,
-    required String language,
-    required int stargazersCount,
-    required int watchersCount,
-    required int forksCount,
-    required int openIssuesCount,
+    required String? language,
+    @JsonKey(name: 'stargazers_count') required int stargazersCount,
+    @JsonKey(name: 'watchers_count') required int watchersCount,
+    @JsonKey(name: 'forks_count') required int forksCount,
+    @JsonKey(name: 'open_issues_count') required int openIssuesCount,
   }) = _Repository;
 
   factory Repository.fromJson(Map<String, dynamic> json) =>

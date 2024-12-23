@@ -15,6 +15,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          theme: ThemeData.light(),
+          darkTheme: ThemeData.dark(),
+          themeMode: ThemeMode.system,
           home: Scaffold(
             body: Center(
               child: Text('Hello World', style: TextStyle(fontSize: 24.sp)),

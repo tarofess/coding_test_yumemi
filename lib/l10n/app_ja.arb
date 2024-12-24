@@ -1,4 +1,12 @@
 {
   "@@locale": "ja",
-  "appBar_title_repositorySearch": "リポジトリ検索"
+  "appBar_title_searchRepositoryPage": "リポジトリ検索",
+  "appBar_title_searchRepositoryDetailPage": "リポジトリの詳細",
+  "label_repositoryName": "リポジトリ名",
+  "label_projectLanguage": "プロジェクト言語",
+  "label_starCount": "Star数",
+  "label_watcherCount": "Watcher数",
+  "label_forkCount": "Fork数",
+  "label_issueCount": "Issue数",
+  "label_none": "なし"
 }

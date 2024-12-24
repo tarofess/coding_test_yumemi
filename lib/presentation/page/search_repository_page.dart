@@ -13,7 +13,7 @@ class SearchRepositoryPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.appBar_title_repositorySearch,
+          AppLocalizations.of(context)!.appBar_title_searchRepositoryPage,
           style: TextStyle(fontSize: 20.sp),
         ),
         toolbarHeight: 58.h,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:coding_test_yumemi/presentation/widget/repository_search_delegate.dart';
 
@@ -12,7 +13,7 @@ class SearchRepositoryPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'リポジトリ検索',
+          AppLocalizations.of(context)!.appBar_title_repositorySearch,
           style: TextStyle(fontSize: 20.sp),
         ),
         toolbarHeight: 58.h,

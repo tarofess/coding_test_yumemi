@@ -21,8 +21,15 @@ class SearchRepositoryDetailPage extends ConsumerWidget {
         ),
         toolbarHeight: 58.h,
       ),
-      body: Center(
-        child: _buildRepositoryDetailItems(context),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 48.h, bottom: 32.h),
+              child: _buildRepositoryDetailItems(context),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -8,5 +8,9 @@
   "label_watcherCount": "Watcher数",
   "label_forkCount": "Fork数",
   "label_issueCount": "Issue数",
-  "label_none": "なし"
+  "label_none": "なし",
+  "sortButton_starCountAscending": "Star数（昇順）",
+  "sortButton_starCountDescending": "Star数（降順）",
+  "message_noSearchResults": "検索結果がありません >_<",
+  "errorMessage_loadMore": "データの読み込みに失敗しました。再試行してください。"
 }

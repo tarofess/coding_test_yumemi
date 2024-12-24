@@ -8,5 +8,9 @@
   "label_watcherCount": "Watcher Count",
   "label_forkCount": "Fork Count",
   "label_issueCount": "Issue Count",
-  "label_none": "None"
+  "label_none": "None",
+  "sortButton_starCountAscending": "Star Count (Ascending)",
+  "sortButton_starCountDescending": "Star Count (Descending)",
+  "message_noSearchResults": "No search results found >_<",
+  "errorMessage_loadMore": "Failed to load data. Please try again."
 }

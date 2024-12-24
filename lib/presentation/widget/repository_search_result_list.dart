@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:coding_test_yumemi/application/state/repository_notifier.dart';
 import 'package:coding_test_yumemi/presentation/widget/search_results_item_card.dart';
@@ -33,7 +34,11 @@ class RepositorySearchResultList extends HookConsumerWidget {
           } catch (e) {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('データの読み込みに失敗しました。再試行してください。')),
+                SnackBar(
+                  content: Text(
+                    AppLocalizations.of(context)!.errorMessage_loadMore,
+                  ),
+                ),
               );
             }
           } finally {
@@ -48,23 +53,24 @@ class RepositorySearchResultList extends HookConsumerWidget {
 
     return repositoryState.when(
       data: (repositories) => repositories.isEmpty
-          ? _buildEmptyMessage()
-          : _buildRepositoryList(ref, scrollController, repositories),
+          ? _buildEmptyMessage(context)
+          : _buildRepositoryList(context, ref, scrollController, repositories),
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) => ErrorMessageWidget(message: error.toString()),
     );
   }
 
-  Widget _buildEmptyMessage() {
+  Widget _buildEmptyMessage(BuildContext context) {
     return Center(
       child: Text(
-        '検索結果がありません >_<',
+        AppLocalizations.of(context)!.message_noSearchResults,
         style: TextStyle(fontSize: 18.sp),
       ),
     );
   }
 
   Widget _buildRepositoryList(
+    BuildContext context,
     WidgetRef ref,
     ScrollController scrollController,
     List<Repository> repositories,
@@ -72,7 +78,7 @@ class RepositorySearchResultList extends HookConsumerWidget {
     return SafeArea(
       child: Column(
         children: [
-          _buildSortButton(ref),
+          _buildSortButton(context, ref),
           Expanded(
             child: ListView.builder(
               controller: scrollController,
@@ -98,7 +104,7 @@ class RepositorySearchResultList extends HookConsumerWidget {
     );
   }
 
-  Widget _buildSortButton(WidgetRef ref) {
+  Widget _buildSortButton(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(repositoryNotifierProvider(query).notifier);
     final isStarAscending = notifier.isStarAscending;
 
@@ -115,7 +121,9 @@ class RepositorySearchResultList extends HookConsumerWidget {
             backgroundColor: Colors.blue[100],
           ),
           child: Text(
-            isStarAscending ? 'Star数（昇順）' : 'Star数（降順）',
+            isStarAscending
+                ? AppLocalizations.of(context)!.sortButton_starCountAscending
+                : AppLocalizations.of(context)!.sortButton_starCountDescending,
             style: TextStyle(fontSize: 14.sp),
           ),
         ),

@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "appBar_title_searchRepositoryPage": "Repository Search",
+  "appBar_title_searchRepositoryDetailPage": "Repository Details",
+  "label_repositoryName": "Repository Name",
+  "label_projectLanguage": "Project Language",
+  "label_starCount": "Star Count",
+  "label_watcherCount": "Watcher Count",
+  "label_forkCount": "Fork Count",
+  "label_issueCount": "Issue Count",
+  "label_none": "None",
+  "sortButton_starCountAscending": "Star Count (Ascending)",
+  "sortButton_starCountDescending": "Star Count (Descending)",
+  "message_noSearchResults": "No search results found >_<",
+  "errorMessage_loadMore": "Failed to load data. Please try again."
+}

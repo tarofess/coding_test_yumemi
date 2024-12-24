@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:coding_test_yumemi/domain/type/repository.dart';
 
@@ -15,34 +16,50 @@ class SearchRepositoryDetailPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'リポジトリの詳細',
+          AppLocalizations.of(context)!.appBar_title_searchRepositoryDetailPage,
           style: TextStyle(fontSize: 20.sp),
         ),
         toolbarHeight: 58.h,
       ),
       body: Center(
-        child: _buildRepositoryDetailItems(),
+        child: _buildRepositoryDetailItems(context),
       ),
     );
   }
 
-  Widget _buildRepositoryDetailItems() {
+  Widget _buildRepositoryDetailItems(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildOwnerImage(),
         SizedBox(height: 24.h),
-        _buildItemText('リポジトリ名', repository.name),
+        _buildItemText(AppLocalizations.of(context)!.label_repositoryName,
+            repository.name),
         SizedBox(height: 8.h),
-        _buildItemText('プロジェクト言語', repository.language ?? 'なし'),
+        _buildItemText(
+          AppLocalizations.of(context)!.label_projectLanguage,
+          repository.language ?? AppLocalizations.of(context)!.label_none,
+        ),
         SizedBox(height: 8.h),
-        _buildItemText('Star数', repository.stargazersCount.toString()),
+        _buildItemText(
+          AppLocalizations.of(context)!.label_starCount,
+          repository.stargazersCount.toString(),
+        ),
         SizedBox(height: 8.h),
-        _buildItemText('Watcher数', repository.watchersCount.toString()),
+        _buildItemText(
+          AppLocalizations.of(context)!.label_watcherCount,
+          repository.watchersCount.toString(),
+        ),
         SizedBox(height: 8.h),
-        _buildItemText('Fork数', repository.forksCount.toString()),
+        _buildItemText(
+          AppLocalizations.of(context)!.label_forkCount,
+          repository.forksCount.toString(),
+        ),
         SizedBox(height: 8.h),
-        _buildItemText('Issue数', repository.openIssuesCount.toString()),
+        _buildItemText(
+          AppLocalizations.of(context)!.label_issueCount,
+          repository.openIssuesCount.toString(),
+        ),
       ],
     );
   }

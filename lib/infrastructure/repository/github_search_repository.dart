@@ -7,6 +7,7 @@ import 'package:coding_test_yumemi/infrastructure/exception/exception_handler.da
 
 class GithubSearchRepository implements SearchRepository {
   final Dio _dio;
+  final int _perpage = 30;
 
   GithubSearchRepository()
       : _dio = Dio(
@@ -17,12 +18,19 @@ class GithubSearchRepository implements SearchRepository {
         );
 
   @override
-  Future<SearchResponse> getSearchResponse(String query) async {
+  Future<SearchResponse> getSearchResponse(
+    String query,
+    int currentPage,
+  ) async {
     try {
       final uri = Uri.https(
         'api.github.com',
         '/search/repositories',
-        {'q': query},
+        {
+          'q': query,
+          'page': currentPage.toString(),
+          'per_page': _perpage.toString(),
+        },
       );
 
       final response = await _dio.get(uri.toString());

@@ -6,7 +6,7 @@ class SearchRepositoryGetUsecase {
 
   SearchRepositoryGetUsecase(this._searchRepository);
 
-  Future<SearchResponse> execute(String query) async {
-    return await _searchRepository.getSearchResponse(query);
+  Future<SearchResponse> execute(String query, int currentPage) async {
+    return await _searchRepository.getSearchResponse(query, currentPage);
   }
 }
